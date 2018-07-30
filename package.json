@@ -1,0 +1,23 @@
+{
+  "name": "sherry",
+  "version": "1.0.0",
+  "description": "Sherry bot",
+  "main": "sherry.js",
+  "scripts": {
+    "test": "node sherry.js", 
+    "start": "node sherry.js"
+  },
+  "keywords": [],
+  "author": "Chi-Han Liu",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crypto": "^1.0.1",
+    "express": "^4.16.3",
+    "linebot": "^1.4.1",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
+  }
+}
