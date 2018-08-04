@@ -1,0 +1,21 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "Sherry's AI weather data.",
+  "main": "weather.js",
+  "scripts": {
+    "test": "node weather.js",
+    "start": "node weather.js"
+  },
+  "keywords": [
+    "Sherry's weather API"
+  ],
+  "author": "Chih-Han Liu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "socket.io-client": "^2.1.1"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "stock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stock.js",
+  "scripts": {
+    "test": "time node stock_test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
