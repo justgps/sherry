@@ -8,6 +8,9 @@ const lineini = require('./config/lineini.js');
 var bot = linebot(lineini);
 var io = require('./socketserver');
 
+const request = require('request');
+const cheerio = require('cheerio');
+
 const port = process.env.PORT || 11000;
 
 function getSign(event) {
@@ -19,6 +22,32 @@ function getSign(event) {
 app.post('/', bot.parser());
 app.get('/', function(req, res) { res.sendStatus(200); });
 
+var timer2;
+
+function _japan(userID) {
+  clearTimeout(timer2);
+  request({
+    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    method: "GET"
+  }, function(error, response, body) {
+    if(error || !body) {
+      clearTimeout(timer2);
+      return;
+    } 
+    else {
+      var $ = cheerio.load(body);
+      var target = $(".rate-content-sight.text-right.print_hide");
+      console.log(target[15].children[0].data);
+      jp = target[15].children[0].data;
+      if (jp < 4) {  
+        bot.push(userID, '現在日幣 ' + jp + '，該買啦！');
+      }
+      timer2 = setInterval("_japan('" + userID + "')", 120000);
+    }
+  });
+}
+
+// event.source.userId
 bot.on('message', function(event) {
    switch(event.message.type) {
       case 'text':
@@ -31,6 +60,16 @@ bot.on('message', function(event) {
             }
             else event.reply("不知道" + event.message.text + "是什麼意思");
          });
+         _japan(event.source.userId);
+/*
+         setTimeout(function(){
+            var userId = event.source.userId;
+            var sendMsg = 'Hello World.';
+            bot.push(userId,sendMsg);
+            console.log('send: '+sendMsg);
+         },5000);
+*/
+
          break;
       case 'image':
          break;
