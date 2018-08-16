@@ -9,7 +9,6 @@ app.get('/getpm/:position', (req, res) => {
    }
    else {
       var s = req.params.position.toString().toLowerCase();
-console.log(s);
       pm.getPM25(s).then(t => {
          if(t) {
             res.send(t.County + t.SiteName + '\nPM2.5:' + t["PM2.5_AVG"] + '\nStatus: ' + t.Status);
