@@ -1,6 +1,6 @@
-APP?=sherry_weather
-PORT?=11001
-ContainerName?=sherry/weather
+APP?=sherry_stock
+PORT?=11002
+ContainerName?=sherry/stock
 
 
 build: 
